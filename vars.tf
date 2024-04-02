@@ -53,28 +53,10 @@ variable "AMIS" {
   }
 } 
 
-# variable "subnet" {
-#   default = [
-#     "subnet-084af3f094dd68af5",
-#     "subnet-0968e42ba44d724f5",
-#     "subnet-0a446bdb58c6c05c4",
-#     "subnet-0b6dd1ae9c524e818"
-#   ]
-# }
 
 variable "project" {
   default =  "CliXX-ASP"
 }
-
-# variable "subnet_ids" {
-#   type = list(string)
-#   default = [ 
-#     "subnet-084af3f094dd68af5",
-#     "subnet-0968e42ba44d724f5",
-#     "subnet-0a446bdb58c6c05c4",
-#     "subnet-0b6dd1ae9c524e818"
-#     ]
-# }
 
 variable "stack_controls" {
   type = map(string)
@@ -119,23 +101,6 @@ variable "blog_snapshot_id" {
 variable "clixx_snapshot_id" {
     default = "arn:aws:rds:us-east-1:730335195244:snapshot:my-clixx-snapshot-abib" 
 }
-
-
-# variable "db_user_clixx" {
-#   default = "wordpressuser"
-# }
-
-# variable "db_user_blog" {
-#   default = "admin"
-# }
-
-# variable "db_password" {
-#   default = "W3lcome123"
-# }
-
-# variable "db_name" {
-#   default = "wordpressdb"
-# }
 
 variable "dev_names" {
   default = ["sdf", "sdg", "sdh", "sdi", "sdj"]
