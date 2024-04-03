@@ -62,7 +62,7 @@ variable "stack_controls" {
   type = map(string)
   default = {
     ec2_create    = "Y"
-    blog_create   = "Y"
+    blog_create   = "N"
     clixx_create  = "Y"
     # ebs_create    = "Y"
   }
