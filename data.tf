@@ -1,10 +1,10 @@
 data "aws_ami" "stack_ami" {
   owners      = ["self"]
-  name_regex  = "^ami-image-.*"
+  name_regex  = "^ami-stack-.*"
   most_recent = true
   filter {
     name   = "name"
-    values = ["ami-image-*"]
+    values = ["ami-stack-*"]
   }
 }
 

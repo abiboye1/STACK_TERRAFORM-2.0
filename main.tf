@@ -15,7 +15,8 @@ resource "aws_key_pair" "Stack_KP" {
 #Server 1
 resource "aws_instance" "BASTION-SERVER1" {
   count                       = var.stack_controls["ec2_create"] == "Y" ? 1 : 0
-  ami                         = local.db_creds.ami
+  # ami                         = local.db_creds.ami
+  ami                         = data.aws_ami.stack_ami.id
   instance_type               = var.EC2_Components["instance_type"]
   vpc_security_group_ids      = [aws_security_group.STACK-PUB-SG.id]
   # user_data               = data.template_file.bootstrap.rendered
@@ -39,7 +40,8 @@ resource "aws_instance" "BASTION-SERVER1" {
 #Server 1
 resource "aws_instance" "BASTION-SERVER2" {
   count                       = var.stack_controls["ec2_create"] == "Y" ? 1 : 0
-  ami                         = local.db_creds.ami
+  # ami                         = local.db_creds.ami
+  ami                         = data.aws_ami.stack_ami.id
   instance_type               = var.EC2_Components["instance_type"]
   vpc_security_group_ids      = [aws_security_group.STACK-PUB-SG.id]
   # user_data               = data.template_file.bootstrap.rendered

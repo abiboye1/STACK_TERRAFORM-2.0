@@ -42,7 +42,7 @@ pipeline {
     agent any
     environment {
         PATH = "${PATH}:${getTerraformPath()}"
-        ACTION = "destroy"
+        ACTION = "apply"
         RUNNER = "Abib"
     }
 
@@ -79,21 +79,21 @@ pipeline {
          }
 
 
-        // stage('Terraform Final Action'){
-        //     steps {
-        //         slackSend (color: '#FFFF00', message: "STARTED apply: Job by ${RUNNER}' ${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-        //         script{stage("Performing Terraform ${ACTION}")}
-        //         sh "terraform ${ACTION} --auto-approve"
-        //         //  sh "terraform apply  -input=false tfplan"
-        //     }
-        // }
-
-        stage('Terraform Destroy'){
+        stage('Terraform Final Action'){
             steps {
-           slackSend (color: '#FFFF00', message: "STARTED destroy: Job by ${RUNNER}' ${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-                 sh "terraform destroy -auto-approve"
+                slackSend (color: '#FFFF00', message: "STARTED apply: Job by ${RUNNER}' ${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                script{stage("Performing Terraform ${ACTION}")}
+                sh "terraform ${ACTION} --auto-approve"
+                //  sh "terraform apply  -input=false tfplan"
             }
         }
+
+        // stage('Terraform Destroy'){
+        //     steps {
+        //    slackSend (color: '#FFFF00', message: "STARTED destroy: Job by ${RUNNER}' ${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        //          sh "terraform destroy -auto-approve"
+        //     }
+        // }
     }
 }
 

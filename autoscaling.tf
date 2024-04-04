@@ -44,7 +44,8 @@ resource "aws_lb_listener" "clixx" {
 resource "aws_launch_template" "L_T" {
   count         = var.stack_controls["clixx_create"] == "Y" ? 1 : 0
   name          = "Clixx_LT"
-  image_id      = local.db_creds.ami
+  # image_id      = local.db_creds.ami
+  image_id      = data.aws_ami.stack_ami.id 
   instance_type = var.instance_type
   user_data     = base64encode(data.template_file.bootstrapCliXXASG.rendered)
   key_name      = aws_key_pair.Stack_KP.key_name
@@ -178,7 +179,8 @@ resource "aws_lb_listener" "blog" {
 resource "aws_launch_template" "blog_L_T" {
   count = var.stack_controls["blog_create"] == "Y" ? 1 : 0
   name          = "Blog-alt"
-  image_id      = local.db_creds.ami
+  # image_id      = local.db_creds.ami
+  image_id      = data.aws_ami.stack_ami.id 
   instance_type = var.instance_type
   user_data     = base64encode(data.template_file.bootstrapBlogASG.rendered)
   key_name      = aws_key_pair.Stack_KP.key_name
