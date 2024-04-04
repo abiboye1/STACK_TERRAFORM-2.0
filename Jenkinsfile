@@ -90,7 +90,7 @@ pipeline {
 
         // stage('Terraform Destroy'){
         //     steps {
-            slackSend (color: '#FFFF00', message: "STARTED destroy: Job by ${RUNNER}' ${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        //    slackSend (color: '#FFFF00', message: "STARTED destroy: Job by ${RUNNER}' ${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
         //          sh "terraform destroy -auto-approve"
         //     }
         // }
